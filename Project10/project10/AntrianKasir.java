@@ -1,7 +1,7 @@
 public class AntrianKasir {
     Pelanggan front, rear;
 
-    public void tambahPelanggan(String nama, Stack keranjang) {
+    public void tambahPelanggan(String nama, KeranjangBelanja keranjang) {
         Pelanggan p = new Pelanggan(nama, keranjang);
         if (rear == null) {
             front = rear = p;
