@@ -9,9 +9,9 @@ public class Inventaris {
         if (current == null) return new Tree(b);
         
         if (b.nama.compareToIgnoreCase(current.data.nama) < 0) {
-            current.left = tambahRekursif(current.left, b);
+            current.kiri = tambahRekursif(current.kiri, b);
         } else if (b.nama.compareToIgnoreCase(current.data.nama) > 0) {
-            current.right = tambahRekursif(current.right, b);
+            current.kanan = tambahRekursif(current.kanan, b);
         } else {
             current.data.stok += b.stok;
         }
@@ -27,9 +27,9 @@ public class Inventaris {
         if (nama.equalsIgnoreCase(current.data.nama)) return current.data;
 
         if (nama.compareToIgnoreCase(current.data.nama) < 0) {
-            return cariRekursif(current.left, nama);
+            return cariRekursif(current.kiri, nama);
         } else {
-            return cariRekursif(current.right, nama);
+            return cariRekursif(current.kanan, nama);
         }
     }
 
@@ -41,25 +41,25 @@ public class Inventaris {
         if (current == null) return null;
 
         if (nama.compareToIgnoreCase(current.data.nama) < 0) {
-            current.left = hapusRekursif(current.left, nama);
+            current.kiri = hapusRekursif(current.kiri, nama);
         } else if (nama.compareToIgnoreCase(current.data.nama) > 0) {
-            current.right = hapusRekursif(current.right, nama);
+            current.kanan = hapusRekursif(current.kanan, nama);
         } else {
-            if (current.left == null) return current.right;
-            if (current.right == null) return current.left;
+            if (current.kiri == null) return current.kanan;
+            if (current.kanan == null) return current.kiri;
 
-            Barang terkecil = cariMin(current.right);
+            Barang terkecil = cariMin(current.kanan);
             current.data = terkecil;
-            current.right = hapusRekursif(current.right, terkecil.nama);
+            current.kanan= hapusRekursif(current.kanan, terkecil.nama);
         }
         return current;
     }
 
     private Barang cariMin(Tree root) {
         Barang min = root.data;
-        while (root.left != null) {
-            min = root.left.data;
-            root = root.left;
+        while (root.kiri != null) {
+            min = root.kiri.data;
+            root = root.kiri;
         }
         return min;
     }
@@ -70,9 +70,9 @@ public class Inventaris {
 
     private void inOrder(Tree node) {
         if (node != null) {
-            inOrder(node.left);
+            inOrder(node.kiri);
             System.out.println(node.data);
-            inOrder(node.right);
+            inOrder(node.kanan);
         }
     }
 }
