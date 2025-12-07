@@ -118,14 +118,14 @@ public class App {
                         System.out.print("Beli berapa? ");
                         int qty = scanner.nextInt();
                         if (qty <= b.stok && qty > 0) {
-                            keranjang.tambah(b, qty);
+                            keranjang.push(b, qty);
                             b.stok -= qty; // Stok berkurang sementara
                             System.out.println("Masuk keranjang!");
                         } else {
                             System.out.println("Stok tidak cukup atau input salah!");
                         }
                     } else {
-                        System.out.println("Barang tidak ada.");
+                        System.out.println("Barang tidak ad2a.");
                     }
                     break;
                 case 3:
@@ -140,7 +140,7 @@ public class App {
                         keranjang.hitungTotal();
                         System.out.print("Ketik nama barang yang mau dihapus: ");
                         String namaHapus = scanner.nextLine();
-                        keranjang.hapus(namaHapus, gudang);
+                        keranjang.hapusBerdasarkanNama(namaHapus, gudang);
                     }
                     break;
                 case 5:
