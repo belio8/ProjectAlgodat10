@@ -148,7 +148,7 @@ public class App {
                         System.out.print("Konfirmasi Checkout? (y/n): ");
                         String confirm = scanner.next();
                         if (confirm.equalsIgnoreCase("y")) {
-                            kasir.enqueue(namaPembeli, keranjang);
+                            kasir.tambahPelanggan(namaPembeli, keranjang);
                             belanja = false;
                         } else {
                             // LOGIKA PENGEMBALIAN STOK (Supaya tidak hilang)
@@ -178,7 +178,7 @@ public class App {
         scanner.nextLine();
 
         if (p == 1) {
-            Pelanggan current = kasir.dequeue();
+            Pelanggan current = kasir.hapusPelanggan();
             if (current != null) {
                 System.out.println("\n==========================");
                 System.out.println("STRUK PEMBELIAN: " + current.nama);

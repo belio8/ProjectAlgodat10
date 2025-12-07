@@ -1,12 +1,13 @@
+// jabatan pegawai (nanti)
 public class Inventaris {
-    Tree root;
+    NodeTree root;
 
     public void tambah(String nama, int harga, int stok) {
         root = tambahRekursif(root, new Barang(nama, harga, stok));
     }
 
-    private Tree tambahRekursif(Tree current, Barang b) {
-        if (current == null) return new Tree(b);
+    private NodeTree tambahRekursif(NodeTree current, Barang b) {
+        if (current == null) return new NodeTree(b);
         
         if (b.nama.compareToIgnoreCase(current.data.nama) < 0) {
             current.kiri = tambahRekursif(current.kiri, b);
@@ -22,7 +23,7 @@ public class Inventaris {
         return searchRecursive(root, nama);
     }
 
-    private Barang searchRecursive(Tree current, String nama) {
+    private Barang searchRecursive(NodeTree current, String nama) {
         if (current == null) return null;
         if (nama.equalsIgnoreCase(current.data.nama)) return current.data;
 
@@ -37,7 +38,7 @@ public class Inventaris {
         root = hapusRekursif(root, nama);
     }
 
-    private Tree hapusRekursif(Tree current, String nama) {
+    private NodeTree hapusRekursif(NodeTree current, String nama) {
         if (current == null) return null;
 
         if (nama.compareToIgnoreCase(current.data.nama) < 0) {
@@ -55,7 +56,7 @@ public class Inventaris {
         return current;
     }
 
-    private Barang cariMin(Tree root) {
+    private Barang cariMin(NodeTree root) {
         Barang min = root.data;
         while (root.kiri != null) {
             min = root.kiri.data;
@@ -68,7 +69,7 @@ public class Inventaris {
         inOrder(root);
     }
 
-    private void inOrder(Tree node) {
+    private void inOrder(NodeTree node) {
         if (node != null) {
             inOrder(node.kiri);
             System.out.println(node.data);
