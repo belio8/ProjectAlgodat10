@@ -1,6 +1,6 @@
 public class Pelanggan {
     String nama;
-    KeranjangBelanja keranjang;
+    Stack keranjang;
     Pelanggan next = null; 
 
     public Pelanggan(String nama, KeranjangBelanja keranjang) {
