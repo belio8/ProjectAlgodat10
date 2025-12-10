@@ -11,16 +11,20 @@ public class RiwayatTransaksi {
     // Menampilkan riwayat transaksi
     public void tampilkan() {
         if (top == null) {
-            System.out.println("   (Riwayat kosong)");
+            System.out.println(Warna.RED + "   (Riwayat kosong)" + Warna.RESET);
             return;
         }
         NodeRiwayat current = top;
+        int no = 1;
+        System.out.printf("%-5s %-15s %-15s%n", "No", "Pelanggan", "Total Belanja");
+        System.out.println("------------------------------------");
         while (current != null) {
-            System.out.println("   " + current.getInfo());
+            System.out.printf("%-5d %-15s Rp%-12d%n", no, current.namaPelanggan, current.totalBelanja);
             current = current.next;
+            no++;
         }
+        System.out.println("------------------------------------");
     }
-
     // Mengurutkan riwayat transaksi
     public void urutkanHistory() {
         if (top == null || top.next == null) {
@@ -52,5 +56,14 @@ public class RiwayatTransaksi {
 
         top = sortedList;
         System.out.println(">> History berhasil diurutkan (Insertion Sort - Total Terbesar).");
+    }
+    public int totalPenjualan() {
+        int sum = 0;
+        NodeRiwayat c = top;
+        while (c != null) {
+            sum += c.totalBelanja;
+            c = c.next;
+        }
+        return sum;
     }
 }

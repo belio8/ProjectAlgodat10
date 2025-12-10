@@ -1,5 +1,5 @@
 public class NodeTree {
-    Barang data; 
+    Barang data;
     NodeTree kiri, kanan;
 
     public NodeTree(Barang data) {
