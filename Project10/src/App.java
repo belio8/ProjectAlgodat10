@@ -8,7 +8,6 @@ public class App {
     static RiwayatTransaksi history = new RiwayatTransaksi();
 
     public static void main(String[] args) {
-        // Seeding Data
         gudang.tambah("Indomie", 3500, 50);
         gudang.tambah("Aqua", 3000, 100);
         gudang.tambah("Roti", 12000, 20);
