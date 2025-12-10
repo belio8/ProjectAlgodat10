@@ -1,12 +1,14 @@
 public class RiwayatTransaksi {
     NodeRiwayat top; 
 
+    // Menambahkan node baru ke stack
     public void push(String nama, int total) {
         NodeRiwayat nodeBaru = new NodeRiwayat(nama, total);
         nodeBaru.next = top;
         top = nodeBaru;
     }
 
+    // Menampilkan riwayat transaksi
     public void tampilkan() {
         if (top == null) {
             System.out.println("   (Riwayat kosong)");
@@ -19,41 +21,36 @@ public class RiwayatTransaksi {
         }
     }
 
+    // Mengurutkan riwayat transaksi
     public void urutkanHistory() {
         if (top == null || top.next == null) {
             System.out.println(">> Data belum cukup untuk disorting.");
             return;
         }
 
-        NodeRiwayat temp = top;
+        NodeRiwayat sortedList = null; 
+        NodeRiwayat current = top;     
 
-        while (temp != null) {
-            NodeRiwayat maxNode = temp;
-            NodeRiwayat r = temp.next;
+        while (current != null) {
+            NodeRiwayat nextNode = current.next; 
 
-            while (r != null) {
-                if (r.totalBelanja > maxNode.totalBelanja) {
-                    maxNode = r;
+            // Insertion Sort (Descending)
+            if (sortedList == null || current.totalBelanja >= sortedList.totalBelanja) {
+                current.next = sortedList;
+                sortedList = current;
+            } else {
+                NodeRiwayat temp = sortedList;
+                while (temp.next != null && temp.next.totalBelanja > current.totalBelanja) {
+                    temp = temp.next;
                 }
-                r = r.next;
+                current.next = temp.next;
+                temp.next = current;
             }
 
-            if (maxNode != temp) {
-                swapData(temp, maxNode);
-            }
-            temp = temp.next;
+            current = nextNode;
         }
 
-        System.out.println(">> History berhasil diurutkan");
-    }
-
-    private void swapData(NodeRiwayat a, NodeRiwayat b) {
-        int tempTotal = a.totalBelanja;
-        a.totalBelanja = b.totalBelanja;
-        b.totalBelanja = tempTotal;
-
-        String tempNama = a.namaPelanggan;
-        a.namaPelanggan = b.namaPelanggan;
-        b.namaPelanggan = tempNama;
+        top = sortedList;
+        System.out.println(">> History berhasil diurutkan (Insertion Sort - Total Terbesar).");
     }
 }
