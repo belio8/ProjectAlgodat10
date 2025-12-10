@@ -47,7 +47,7 @@ public class KeranjangBelanja {
         }
         if (!found) System.out.println("Barang tidak ditemukan di keranjang.");
     }
-`
+
     public void kembalikanSemuaStok() {
         while(head != null) {
             head.barang.stok += head.qty;
