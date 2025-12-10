@@ -1,5 +1,5 @@
 public class KeranjangBelanja {
-    Keranjang head; // top of stack
+    Keranjang head;
 
     // Push barang ke stack
     public void push(Barang b, int qty) {
@@ -47,8 +47,7 @@ public class KeranjangBelanja {
         }
         if (!found) System.out.println("Barang tidak ditemukan di keranjang.");
     }
-
-    // Kembalikan semua stok jika batal belanja
+`
     public void kembalikanSemuaStok() {
         while(head != null) {
             head.barang.stok += head.qty;
