@@ -9,7 +9,7 @@ public class AntrianKasir {
             rear.next = p;
             rear = p;
         }
-        System.out.println(">> " + nama + " berhasil masuk antrian kasir.");
+        System.out.println(">> " + nama + " masuk antrian kasir.");
     }
 
     public Pelanggan hapusPelanggan() {
@@ -22,5 +22,23 @@ public class AntrianKasir {
 
     public boolean isEmpty() {
         return front == null;
+    }
+
+    public void lihatAntrian() {
+        if (isEmpty()) {
+            System.out.println("   (Antrian kosong)");
+            return;
+        }
+        System.out.println("================================");
+        System.out.println("\n ====== DAFTAR ANTRIAN =======");
+        System.out.println("================================");
+        Pelanggan current = front;
+        int nomor = 1;
+        while (current != null) {
+            System.out.println("   " + nomor + ". " + current.nama);
+            current = current.next;
+            nomor++;
+        }
+        System.out.println("   ----------------------");
     }
 }
