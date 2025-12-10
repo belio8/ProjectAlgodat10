@@ -44,7 +44,7 @@ public class RiwayatTransaksi {
             temp = temp.next;
         }
 
-        System.out.println(">> History berhasil diurutkan (Selection Sort - Total Terbesar).");
+        System.out.println(">> History berhasil diurutkan");
     }
 
     private void swapData(NodeRiwayat a, NodeRiwayat b) {
