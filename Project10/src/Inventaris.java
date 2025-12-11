@@ -35,8 +35,8 @@ public class Inventaris {
         if (root == null) {
             System.out.println(Warna.RED + "   (Gudang Kosong)" + Warna.RESET);
         } else {
-            System.out.printf("%-15s %-10s %-10s %-10s%n", "Nama", "Harga", "Stok", "Terjual");
-            System.out.println("-----------------------------------------------");
+            System.out.printf("%-25s %-10s %2s %-10s %-10s%n", "Nama", "Harga", " ", "Stok", "Terjual");
+            System.out.println("----------------------------------------------------------");
             inOrder(root);
         }
     }
@@ -45,8 +45,8 @@ public class Inventaris {
         if (node != null) {
             inOrder(node.kiri);
             String warnaStok = node.data.stok < 5 ? Warna.RED : Warna.GREEN;
-            System.out.printf("%-15s Rp%-9d " + warnaStok + "%-10d" + Warna.RESET + " %-10d%n",
-                node.data.nama, node.data.harga, node.data.stok, node.data.terjual);
+            System.out.printf("%-25s %2s %-10d " + warnaStok + "%-10d" + Warna.RESET + " %-10d%n",
+                node.data.nama, "Rp", node.data.harga, node.data.stok, node.data.terjual);
             inOrder(node.kanan);
         }
     }
