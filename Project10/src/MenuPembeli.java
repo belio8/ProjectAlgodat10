@@ -13,7 +13,7 @@ public class MenuPembeli {
             System.out.println(Warna.CYAN + "====================================" + Warna.RESET);
             System.out.println(Warna.YELLOW + "1. Lihat Barang" + Warna.RESET);
             System.out.println(Warna.YELLOW + "2. Cari & Beli" + Warna.RESET);
-            System.out.println(Warna.YELLOW + "3. Edit Qty/Hapus Item" + Warna.RESET);
+            System.out.println(Warna.YELLOW + "3. Edit Item" + Warna.RESET);
             System.out.println(Warna.YELLOW + "4. Cek Keranjang" + Warna.RESET);
             System.out.println(Warna.YELLOW + "5. Kosongkan Keranjang" + Warna.RESET);
             System.out.println(Warna.RED + "6. Pergi ke Kasir" + Warna.RESET);
@@ -57,20 +57,20 @@ public class MenuPembeli {
                     if (keranjang.isEmpty()) System.out.println("Keranjang kosong.");
                     else keranjang.hitungTotal();
                     break;
-                    case 5:
+                case 5:
                     keranjang.kembalikanSemuaStok();
-                    System.out.println(Warna.RED + "Keranjang dikosongkan, stok dikembalikan." + Warna.RESET);
+                    System.out.println(Warna.RED + "Keranjang berhasil dikosongkan " + Warna.RESET);
                     break;
                 case 6:
                     System.out.print("Menuju antrian kasir? (y/n): ");
                     String ya = scanner.nextLine();
                     if (ya.equalsIgnoreCase("y")) {
                         kasir.tambahPelanggan(namaPembeli, keranjang);
-                        System.out.println(Warna.GREEN + "Masuk antrian kasir." + Warna.RESET);
+                        System.out.println(Warna.GREEN + "Berhasil masuk antrian " + Warna.RESET);
                         belanja = false;
                     } else {
                         keranjang.kembalikanSemuaStok();
-                        System.out.println(Warna.RED + "Checkout dibatalkan, stok dikembalikan." + Warna.RESET);
+                        System.out.println(Warna.RED + "Pembelian telah dibatalkan " + Warna.RESET);
                     }
                     break;
                 case 7:
