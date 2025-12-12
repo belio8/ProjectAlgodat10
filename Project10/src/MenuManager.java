@@ -10,7 +10,7 @@ public class MenuManager {
             System.out.println(Warna.YELLOW + "1. Lihat Stok (Tree A-Z)" + Warna.RESET);
             System.out.println(Warna.YELLOW + "2. Tambah Stok" + Warna.RESET);
             System.out.println(Warna.YELLOW + "3. Lihat History Penjualan" + Warna.RESET);
-            System.out.println(Warna.YELLOW + "4. Urutkan History (Insertion Sort - Highest Total)" + Warna.RESET);
+            System.out.println(Warna.YELLOW + "4. Urutkan History (Highest Total)" + Warna.RESET);
             System.out.println(Warna.GREEN  + "5. Lihat Barang Paling Laris" + Warna.RESET);
             System.out.println(Warna.YELLOW + "6. Lihat Barang Termurah" + Warna.RESET);
             System.out.println(Warna.YELLOW + "7. Lihat Barang Termahal" + Warna.RESET);
