@@ -24,7 +24,9 @@ public class KeranjangBelanja {
     public boolean isEmpty() {
         return head == null;
     }
-    public void hapusBerdasarkanNama(String nama) {
+
+    
+    public void hapusBerdasarkanNama(String nama, Inventaris gudang) {
         KeranjangBelanja tempStack = new KeranjangBelanja();
         boolean found = false;
         while (!isEmpty()) {
@@ -38,6 +40,7 @@ public class KeranjangBelanja {
                 tempStack.push(top.barang, top.qty);
             }
         }
+       
         while (!tempStack.isEmpty()) {
             Keranjang t = tempStack.pop();
             push(t.barang, t.qty);
@@ -55,27 +58,24 @@ public class KeranjangBelanja {
     public int hitungTotal() {
         int total = 0;
         Keranjang current = head;
-        System.out.println(Warna.YELLOW + "   --- Rincian Belanja ---" + Warna.RESET);
-        System.out.printf("%-15s %-10s %-10s%n", "Barang", "Qty", "Subtotal");
-        System.out.println("------------------------------------");
+        System.out.println("   --- Rincian Belanja ---");
         while (current != null) {
             int subtotal = current.barang.harga * current.qty;
-            System.out.printf("%-15s %-10d Rp%-9d%n", current.barang.nama, current.qty, subtotal);
+            System.out.println("   - " + current.barang.nama + " (" + current.qty + "x) = Rp " + subtotal);
             total += subtotal;
             current = current.next;
         }
         return total;
     }
-    // Tambahan: hitung total dengan diskon otomatis
     public int hitungTotalDenganDiskon() {
         int total = 0;
         Keranjang current = head;
-        System.out.printf("%-15s %-10s %-10s %-10s %-10s%n", 
-            "Barang", "Qty", "Harga", "Diskon", "Subtotal");
+        System.out.printf("%-15s %-15s %-10s %-10s %-10s%n", 
+            "Barang", "Jumlah Barang", "Harga", "Diskon", "Subtotal");
         System.out.println("---------------------------------------------------------------");
         while (current != null) {
             int harga = current.barang.harga;
-            double dItem = current.barang.diskonBarang; // field di Barang
+            double dItem = current.barang.diskonBarang; 
             int hargaSetelahDiskonItem = (int) Math.round(harga * (1.0 - dItem));
             int subtotal = hargaSetelahDiskonItem * current.qty;
             String dscStr = dItem > 0 ? (int)(dItem * 100) + "%" : "-";
@@ -102,14 +102,14 @@ public class KeranjangBelanja {
         Keranjang cur = head;
         while (cur != null) {
             if (cur.barang.nama.equalsIgnoreCase(namaBarang)) {
-                // kembalikan stok lama dulu
+
                 cur.barang.stok += cur.qty;
                 if (qtyBaru <= 0) {
-                    // hapus item jika qtyBaru <= 0
+      
                     hapusItem(namaBarang);
                     return true;
                 }
-                // cek stok cukup
+          
                 if (cur.barang.stok < qtyBaru) return false;
                 cur.barang.stok -= qtyBaru;
                 cur.qty = qtyBaru;
@@ -133,4 +133,5 @@ public class KeranjangBelanja {
         }
         return false;
     }
+
 }

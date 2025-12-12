@@ -16,7 +16,7 @@ public class MenuPembeli {
             System.out.println(Warna.YELLOW + "3. Edit Qty/Hapus Item" + Warna.RESET);
             System.out.println(Warna.YELLOW + "4. Cek Keranjang" + Warna.RESET);
             System.out.println(Warna.YELLOW + "5. Kosongkan Keranjang" + Warna.RESET);
-            System.out.println(Warna.RED + "6. Checkout" + Warna.RESET);
+            System.out.println(Warna.RED + "6. Pergi ke Kasir" + Warna.RESET);
             System.out.println(Warna.RED + "7. Kembali" + Warna.RESET);
             System.out.print(Warna.BLUE + "Pilih: " + Warna.RESET);
             
@@ -62,7 +62,7 @@ public class MenuPembeli {
                     System.out.println(Warna.RED + "Keranjang dikosongkan, stok dikembalikan." + Warna.RESET);
                     break;
                 case 6:
-                    System.out.print("Yakin checkout? (y/n): ");
+                    System.out.print("Menuju antrian kasir? (y/n): ");
                     String ya = scanner.nextLine();
                     if (ya.equalsIgnoreCase("y")) {
                         kasir.tambahPelanggan(namaPembeli, keranjang);
