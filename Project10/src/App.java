@@ -119,7 +119,7 @@ public class App {
         boolean running = true;
         while (running) {
             System.out.println(Warna.CYAN + "===============================" + Warna.RESET);
-            System.out.println(Warna.CYAN + "           S-MART JAVA         " + Warna.RESET);
+            System.out.println(Warna.CYAN + "             S-MART            " + Warna.RESET);
             System.out.println(Warna.CYAN + "===============================" + Warna.RESET);
             System.out.println(Warna.YELLOW + "1. Login Manager" + Warna.RESET);
             System.out.println(Warna.YELLOW + "2. Login Pembeli" + Warna.RESET);
