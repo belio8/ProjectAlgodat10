@@ -35,29 +35,40 @@ public class Inventaris {
         if (root == null) {
             System.out.println(Warna.RED + "   (Gudang Kosong)" + Warna.RESET);
         } else {
-            System.out.printf("%-25s %-10s %2s %-10s %-10s%n", "Nama", "Harga", " ", "Stok", "Terjual");
-            System.out.println("----------------------------------------------------------");
-            inOrder(root);
+            System.out.printf("%-25s %-10s %2s %-10s %-10s%n", "Nama", "Harga"," ", "Stok", "Terjual");
+            System.out.println("-----------------------------------------------");
+            // cek apakah ada barang dengan stok > 0
+            if (!adaStok(root)) {
+                System.out.println(Warna.RED + "   (Semua barang habis)" + Warna.RESET);
+            } else {
+                inOrder(root);
+            }
         }
     }
 
     private void inOrder(NodeTree node) {
         if (node != null) {
             inOrder(node.kiri);
-            String warnaStok = node.data.stok < 5 ? Warna.RED : Warna.GREEN;
-            System.out.printf("%-25s %2s %-10d " + warnaStok + "%-10d" + Warna.RESET + " %-10d%n",
-                node.data.nama, "Rp", node.data.harga, node.data.stok, node.data.terjual);
+            if (node.data.stok > 0) { // hanya tampilkan jika stok masih ada
+                String warnaStok = node.data.stok < 5 ? Warna.RED : Warna.GREEN;
+                System.out.printf("%-25s %2s %-10d " + warnaStok + "%-10d" + Warna.RESET + " %-10d%n",
+                    node.data.nama, "Rp", node.data.harga, node.data.stok, node.data.terjual);
+            }
             inOrder(node.kanan);
         }
     }
-    // Barang paling laris
-    public Barang cariBarangPalingLaris() {
-        return cariBarangPalingLarisRekursif(root, null);
-    }
 
+    // helper untuk cek apakah ada barang dengan stok > 0
+    private boolean adaStok(NodeTree node) {
+        if (node == null) return false;
+        if (node.data.stok > 0) return true;
+        return adaStok(node.kiri) || adaStok(node.kanan);
+    }
+    // Barang paling laris
     private Barang cariBarangPalingLarisRekursif(NodeTree node, Barang currentMax) {
         if (node == null) return currentMax;
 
+        // cek apakah node ini lebih laris dari currentMax
         if (currentMax == null || node.data.terjual > currentMax.terjual) {
             currentMax = node.data;
         }
@@ -66,6 +77,17 @@ public class Inventaris {
         currentMax = cariBarangPalingLarisRekursif(node.kanan, currentMax);
 
         return currentMax;
+    }
+
+    // method publik untuk dipanggil dari menu manager
+    public Barang cariBarangPalingLaris() {
+        Barang hasil = cariBarangPalingLarisRekursif(root, null);
+        // validasi: kalau semua terjual = 0, jangan tampilkan barang
+        if (hasil == null || hasil.terjual == 0) {
+            System.out.println(">> Belum ada barang yang terjual.");
+            return null;
+        }
+        return hasil;
     }
     public Barang cariBarangTermurah() {
         return cariTermurah(root, null);

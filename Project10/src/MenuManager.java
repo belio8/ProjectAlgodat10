@@ -50,7 +50,7 @@ public class MenuManager {
                     if (laris != null) {
                         System.out.println(">> Barang paling laris: " + laris.getInfo());
                     } else {
-                        System.out.println(">> Gudang kosong.");
+                        System.out.println(">> Transaksi kosong.");
                     }
                     break;
                 case 6:

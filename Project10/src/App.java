@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
     // ================== MAKANAN INSTANT ==================
     gudang.tambah("Indomie Goreng", 3500, 50);
-    gudang.tambah("Indomie Ayam Bawang", 3500, 40);
+    gudang.tambah("Indomie Ayam Bawang", 3500, 0);
     gudang.tambah("Mie Sedap Soto", 4000, 30);
     gudang.tambah("Sarimi Kari Ayam", 3000, 25);
     gudang.tambah("Pop Mie Ayam", 5000, 20);
@@ -21,7 +21,7 @@ public class App {
     gudang.tambah("Mie Korea Samyang", 15000, 12);
 
     // ================== MINUMAN ==================
-    gudang.tambah("Aqua Botol 600ml", 3000, 100);
+    gudang.tambah("Aqua Botol 600ml", 3000, 0);
     gudang.tambah("Le Minerale 600ml", 3500, 80);
     gudang.tambah("Teh Botol Sosro", 5000, 60);
     gudang.tambah("Kopi Kapal Api Sachet", 2000, 120);
