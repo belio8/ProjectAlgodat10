@@ -75,7 +75,7 @@ public class MenuPembeli {
                     break;
                 case 7:
                     if (!keranjang.isEmpty()) {
-                        System.out.print("Keranjang belum kosong. Tetap keluar tanpa checkout? (y/n): ");
+                        System.out.print("Keranjang belum kosong. Keluar? (y/n): ");
                         if (scanner.nextLine().equalsIgnoreCase("y")) {
                             keranjang.kembalikanSemuaStok();
                             belanja = false;
