@@ -1,14 +1,12 @@
 public class KeranjangBelanja {
     Keranjang head;
 
-    // Push barang ke stack
     public void push(Barang b, int qty) {
         Keranjang nodeBaru = new Keranjang(b, qty);
         nodeBaru.next = head;
         head = nodeBaru;
     }
 
-    // Pop barang teratas dari stack
     public Keranjang pop() {
         if (head == null) return null;
         Keranjang temp = head;
@@ -123,7 +121,7 @@ public class KeranjangBelanja {
         Keranjang cur = head, prev = null;
         while (cur != null) {
             if (cur.barang.nama.equalsIgnoreCase(namaBarang)) {
-                cur.barang.stok += cur.qty; // kembalikan stok
+                cur.barang.stok += cur.qty; 
                 if (prev == null) head = cur.next;
                 else prev.next = cur.next;
                 return true;

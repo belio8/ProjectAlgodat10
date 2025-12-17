@@ -1,14 +1,12 @@
 public class RiwayatTransaksi {
     NodeRiwayat top; 
 
-    // Menambahkan node baru ke stack
     public void push(String nama, int total) {
         NodeRiwayat nodeBaru = new NodeRiwayat(nama, total);
         nodeBaru.next = top;
         top = nodeBaru;
     }
 
-    // Menampilkan riwayat transaksi
     public void tampilkan() {
         if (top == null) {
             System.out.println(Warna.RED + "   (Riwayat kosong)" + Warna.RESET);
@@ -25,7 +23,6 @@ public class RiwayatTransaksi {
         }
         System.out.println("------------------------------------");
     }
-    // Mengurutkan riwayat transaksi
     public void urutkanHistory() {
         if (top == null || top.next == null) {
             System.out.println(">> Data belum cukup untuk disorting.");
@@ -38,7 +35,6 @@ public class RiwayatTransaksi {
         while (current != null) {
             NodeRiwayat nextNode = current.next; 
 
-            // Insertion Sort (Descending)
             if (sortedList == null || current.totalBelanja >= sortedList.totalBelanja) {
                 current.next = sortedList;
                 sortedList = current;
@@ -55,7 +51,7 @@ public class RiwayatTransaksi {
         }
 
         top = sortedList;
-        System.out.println(">> History berhasil diurutkan (Insertion Sort - Total Terbesar).");
+        System.out.println(">> History berhasil diurutkan (Total Terbesar).");
     }
     public int totalPenjualan() {
         int sum = 0;
