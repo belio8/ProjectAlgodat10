@@ -1,11 +1,12 @@
 public class Pelanggan {
     
-    public String nama;
-    public KeranjangBelanja keranjang;
-    public Pelanggan next; 
+    String nama;
+    KeranjangBelanja keranjang;
+    Pelanggan next; 
 
     public Pelanggan(String nama, KeranjangBelanja keranjang) {
         this.nama = nama;
         this.keranjang = keranjang;
+        this.next = null;
     }
 }

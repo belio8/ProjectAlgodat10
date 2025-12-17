@@ -25,16 +25,14 @@ public class MenuKasir {
                     } else {
                         Pelanggan current = kasir.hapusPelanggan();
                         if (current != null) {
-                            // === STRUK BELANJA dengan border & warna ===
+                            
                             System.out.println(Warna.CYAN + "====================================" + Warna.RESET);
                             System.out.println(Warna.CYAN + "             STRUK BELANJA          " + Warna.RESET);
                             System.out.println(Warna.CYAN + "====================================" + Warna.RESET);
                             System.out.println("Pelanggan: " + current.nama);
 
-                            // tampilkan detail diskon per item
                             int total = current.keranjang.hitungTotalDenganDiskon();
 
-                            // update jumlah terjual per barang
                             Keranjang item = current.keranjang.head;
                             while (item != null) {
                                 item.barang.terjual += item.qty;

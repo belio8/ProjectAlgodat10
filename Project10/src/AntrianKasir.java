@@ -30,7 +30,7 @@ public class AntrianKasir {
             return;
         }
         System.out.println("================================");
-        System.out.println("\n ====== DAFTAR ANTRIAN =======");
+        System.out.println("         DAFTAR ANTRIAN         ");
         System.out.println("================================");
         Pelanggan current = front;
         int nomor = 1;
